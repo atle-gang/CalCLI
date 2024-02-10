@@ -24,6 +24,12 @@ CalCLI aims to provide comprehensive functionality for managing calendars and ev
 
 ## Installation
 
+### - Install the client library
+
+```bash
+npm install googleapis@105 @google-cloud/local-auth@2.1.0 --save
+```
+
 ## Usage
 
 
