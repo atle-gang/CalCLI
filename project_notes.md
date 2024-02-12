@@ -26,7 +26,6 @@ export function listEvents(auth) {
 Also, we can put `export` separately
 
 ```javascript
-// 📁 say.js
 function listEvents(auth) {
   // rest of the code
 }
