@@ -1,5 +1,16 @@
 const { authorize } = require("../configuration");
 const { google } = require("googleapis");
+const { prompt } = require('prompt-sync')();
+
+function getUserPrompt() {
+  const validDaysCommand = [7, 14, 28]
+
+
+  const calendarLength = prompt("Please enter the number of days you'd like to view on the calendar: (7, 14, 28) ");
+  console.log(parseInt(calendarLength))
+}
+
+// getUserPrompt()
 
 async function listEvents() {
     /**
@@ -29,5 +40,5 @@ async function listEvents() {
     });
 }
 
-// export { listEvents };
+// export { listEvents };z
 module.exports = { listEvents }

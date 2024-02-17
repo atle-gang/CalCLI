@@ -122,3 +122,18 @@ const TOKEN_PATH = path.join(process.cwd(), './calendar/configuration/token.json
 const CREDENTIALS_PATH = path.join(process.cwd(), './calendar/configuration/credentials.json');
 ```
 
+
+### Getting user prompt 
+
+The next hump I came across was using trying to get the user input in the NodeJS environment.
+I learnt that when running JavaScript code in a terminal or command prompt, you need to receive input from the user and display output in a text-based interface, and that's where libraries like `prompt-sync` come in hand. It provides a way to interact with users through the terminal by capturing user input and displaying text prompts.
+
+```javascript
+
+function getUserPrompt() {
+
+  const prompt = require('prompt-sync')();
+
+  const calendarLength = prompt("Please enter the number of days you'd like to view on the calendar: (7, 14, 28) ");
+}
+```
