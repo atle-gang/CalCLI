@@ -2,15 +2,33 @@ const { authorize } = require("../configuration");
 const { google } = require("googleapis");
 const { prompt } = require('prompt-sync')();
 
-function getUserPrompt() {
-  const validDaysCommand = [7, 14, 28]
-
-
-  const calendarLength = prompt("Please enter the number of days you'd like to view on the calendar: (7, 14, 28) ");
-  console.log(parseInt(calendarLength))
+function getUserInput() {
+  
+  const prompt = require('prompt-sync')();
+  
+  userInput = prompt("Please enter the number of days you'd like to view on the calendar: (7, 14, 28) ");
+  return userInput;
 }
 
-// getUserPrompt()
+
+function validateInput(input) {
+    const validDaysCommand = [7, 14, 28];
+    parsedInput = parseInt(input);
+    return validDaysCommand.includes(parsedInput);
+}
+
+
+function getUserPrompt() {
+  let calendarLength;
+  do {
+    calendarLength = getUserInput();
+    console.log("Please insert the valid number of days. (7, 14, 28)")
+  } while (!validateInput(calendarLength));
+
+  console.log("Valid input:", calendarLength)
+}
+
+
 
 async function listEvents() {
     /**
