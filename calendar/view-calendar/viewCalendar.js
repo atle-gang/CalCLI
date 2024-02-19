@@ -25,9 +25,8 @@ function getUserPrompt() {
     console.log("Please insert the valid number of days. (7, 14, 28)")
   } while (!validateInput(calendarLength));
 
-  console.log("Valid input:", calendarLength)
+  return calendarLength;
 }
-
 
 
 async function listEvents() {
@@ -37,12 +36,18 @@ async function listEvents() {
 
     // Call the authorize function to obtain an authenticated client
     const auth = await authorize() 
+    const now = new Date();
+    const numberOfDays = 7;
+    const timeMax = new Date(now.getTime() + numberOfDays * 24 * 60 * 60 * 1000);
+
+    const formattedTimeMax = timeMax.toISOString();
 
     const calendar = google.calendar({version: 'v3', auth});
     const res = await calendar.events.list({
       calendarId: 'primary',
       timeMin: new Date().toISOString(),
-      maxResults: 10,
+      // maxResults: 10,
+      timeMax: formattedTimeMax,
       singleEvents: true,
       orderBy: 'startTime',
     });
