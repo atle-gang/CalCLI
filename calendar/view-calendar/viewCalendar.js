@@ -3,7 +3,9 @@ const { google } = require("googleapis");
 const { prompt } = require('prompt-sync')();
 
 function getUserInput() {
-  
+  /**
+   * Get user input
+   */
   const prompt = require('prompt-sync')();
   
   userInput = prompt("Please enter the number of days you'd like to view on the calendar: (7, 14, 28) ");
@@ -12,6 +14,9 @@ function getUserInput() {
 
 
 function validateInput(input) {
+  /**
+   * Validate user input
+   */
     const validDaysCommand = [7, 14, 28];
     parsedInput = parseInt(input);
     return validDaysCommand.includes(parsedInput);
@@ -19,6 +24,9 @@ function validateInput(input) {
 
 
 function getUserPrompt() {
+  /**
+   * Use user input to select number of days to display events for
+   */
   let calendarLength;
   do {
     calendarLength = getUserInput();
